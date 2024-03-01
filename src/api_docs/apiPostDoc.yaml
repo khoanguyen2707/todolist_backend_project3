@@ -1,0 +1,79 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Post API"
+  description: "API for managing posts"
+basePath: "/"
+paths:
+  /post:
+    get:
+      summary: "Get all posts"
+      responses:
+        200:
+          description: "Success"
+    post:
+      summary: "Create a new post"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Post object"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              title:
+                type: "string"
+                description: "Title of the post"
+              content:
+                type: "string"
+                description: "Content of the post"
+      responses:
+        200:
+          description: "Success"
+  /post/{id}:
+    get:
+      summary: "Get a single post"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the post"
+      responses:
+        200:
+          description: "Success"
+    patch:
+      summary: "Update a single post"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the post"
+        - in: "body"
+          name: "body"
+          description: "Updated post object"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              title:
+                type: "string"
+                description: "Title of the post"
+              content:
+                type: "string"
+                description: "Content of the post"
+      responses:
+        200:
+          description: "Success"
+    delete:
+      summary: "Delete a single post"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the post"
+      responses:
+        200:
+          description: "Success"
